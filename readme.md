@@ -17,7 +17,7 @@ Vue SPA with Laravel + JWT for auth example template project setup
 
 <p>Open <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></p>
 
-## Setup data user for test
+## Setup data user
 <p>after setup .env file & install tymondesigns/jwt-auth</p>
 <pre>
     1. php artisan tinger
