@@ -15,6 +15,16 @@ Vue SPA with Laravel + JWT for auth example template project setup
     2. npm run watch #live reload after change file  
 </pre>
 
+<p>Open <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></p>
+
+## Setup data user for test
+<p>after setup .env file & install tymondesigns/jwt-auth</p>
+<pre>
+    1. php artisan tinger
+    2. DB::table('users')->insert(['name'=>'admin','email'=>'admin@gmal.com','password'=>Hash::make('admn')])
+    3. exit
+</pre>
+
 ## License
 
 The MIT License (MIT)
