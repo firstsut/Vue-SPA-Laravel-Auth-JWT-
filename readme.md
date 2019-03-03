@@ -22,7 +22,7 @@ Vue SPA with Laravel + JWT for auth example template project setup
 <pre>
     1. php artisan tinger
     2. DB::table('users')->insert(['name'=>'admin','email'=>'admin@gmal.com','password'=>Hash::make('admin')])
-    3. exit
+    3. Exit
 </pre>
 
 ## License
