@@ -20,6 +20,12 @@
                     <li>
                         <router-link :to="{ name: 'home' }">Home</router-link>
                     </li>
+                    <li v-if="checkLogin">
+                        <router-link :to="{ name: 'post' }">Post</router-link>
+                    </li>
+                    <li v-if="checkLogin">
+                        <router-link :to="{ name: 'author' }">Author</router-link>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -56,7 +62,7 @@
         },
         created (){
             if(localStorage.token) {
-                axios.get('/api/user', {
+                axios.get('user', {
                         headers: {
                             Authorization: 'Bearer ' + localStorage.getItem('token')
                         }
@@ -66,7 +72,7 @@
                 }).catch(error => {
                     console.log(error);
                     if (error.response.status === 401 || error.response.status === 403) {
-                        store.commit('logoutUser')
+                        store.commit('logoutUser');
                         localStorage.setItem('token', '')
                         this.$router.push({name: 'login'})
                     }

@@ -19,10 +19,79 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+window.iziToast = require('izitoast/src/js/iziToast');
+window.notificationSystem = {
+    options: {
+        show: {
+            theme: 'dark',
+                icon: 'icon-person',
+                position: 'topCenter',
+                progressBarColor: 'rgb(0, 255, 184)',
+                buttons: [
+                ['<button>Ok</button>', function (instance, toast) {
+                    alert("Hello world!");
+                }, true],
+                ['<button>Close</button>', function (instance, toast) {
+                    instance.hide({
+                        transitionOut: 'fadeOutUp',
+                        onClosing: function(instance, toast, closedBy){
+                            console.info('closedBy: ' + closedBy);
+                        }
+                    }, toast, 'buttonName');
+                }]
+            ],
+                onOpening: function(instance, toast){
+                console.info('callback abriu!');
+            },
+            onClosing: function(instance, toast, closedBy){
+                console.info('closedBy: ' + closedBy);
+            }
+        },
+        ballon: {
+            balloon: true,
+                position: 'bottomCenter'
+        },
+        info: {
+            position: 'bottomLeft'
+        },
+        success: {
+            position: 'bottomRight'
+        },
+        warning: {
+            position: 'topLeft'
+        },
+        error: {
+            position: 'topRight'
+        },
+        question: {
+            timeout: 20000,
+                close: false,
+                overlay: true,
+                toastOnce: true,
+                id: 'question',
+                zindex: 999,
+                position: 'center',
+                buttons: [
+                ['<button><b>YES</b></button>', function (instance, toast) {
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                }, true],
+                ['<button>NO</button>', function (instance, toast) {
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                }]
+            ],
+                onClosing: function(instance, toast, closedBy){
+                console.info('Closing | closedBy: ' + closedBy);
+            },
+            onClosed: function(instance, toast, closedBy){
+                console.info('Closed | closedBy: ' + closedBy);
+            }
+        }
+    }
+};
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
+window.axios.defaults.baseURL = 'api';
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
