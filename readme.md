@@ -21,7 +21,7 @@ Vue SPA with Laravel + JWT for auth example template project setup
 <p>after setup .env file & install tymondesigns/jwt-auth</p>
 <pre>
     1. php artisan tinger
-    2. DB::table('users')->insert(['name'=>'admin','email'=>'admin@gmal.com','password'=>Hash::make('admn')])
+    2. DB::table('users')->insert(['name'=>'admin','email'=>'admin@gmal.com','password'=>Hash::make('admin')])
     3. exit
 </pre>
 
